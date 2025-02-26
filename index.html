@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning Landing Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i> MySite
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="hero">
+        <div>
+            <div class="hero-text">Welcome to Our E-Learning Platform</div>
+            <div class="hero-subtext">Find the best products curated just for you.</div>
+        </div>
+        
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+        
+        <dotlottie-player src="https://lottie.host/551dfa7b-e16f-47bf-bc27-37ed4a400356/HQpZxx6sz2.lottie" background="transparent" speed="1" style="width: 400px; height: 400px" loop autoplay></dotlottie-player>
+
+    </div>
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <ul id="navList"></ul>
+        </div>
+
+        <div class="cards">
+           <div class="card-container">
+            <div class="card-header">9</div>
+            <div class="card-content">Class 9</div>
+            <div class="card-description">Explore engaging subjects for Class 9 students.</div>
+        </div>
+
+        <div class="card-container">
+            <div class="card-header">10</div>
+            <div class="card-content">Class 10</div>
+            <div class="card-description">Deepen your understanding with advanced topics.</div>
+        </div>
+
+        <div class="card-container">
+            <div class="card-header">11</div>
+            <div class="card-content">Class 11</div>
+            <div class="card-description">Prepare for higher studies with core concepts.</div>
+        </div>
+
+        <div class="card-container">
+            <div class="card-header">12</div>
+            <div class="card-content">Class 12</div>
+            <div class="card-description">Master subjects for academic and career success.</div>
+        </div>
+
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const navData = [
+        { class: "Class 8", subjects: ["Math", "Science", "English"] },
+        { class: "Class 9", subjects: ["Physics", "Chemistry", "Biology"] },
+        { class: "Class 10", subjects: ["Algebra", "Geometry", "History"] },
+        { class: "Class 11", subjects: ["Calculus", "Economics", "Computer Science"] },
+        { class: "Class 12", subjects: ["Physics", "Accountancy", "Political Science"] }
+    ];
+
+    const navList = document.getElementById("navList");
+
+    navData.forEach(item => {
+        let listItem = document.createElement("li");
+        listItem.textContent = item.class;
+
+        // Add icon for dropdown toggle
+        let icon = document.createElement("i");
+        icon.innerHTML = "&#9656;"; // Right arrow icon
+        listItem.appendChild(icon);
+        
+        listItem.onclick = function () {
+            let subMenu = this.querySelector(".dropdown-content");
+            if (subMenu) {
+                subMenu.classList.toggle("show");
+                listItem.classList.toggle("expanded"); // Rotate arrow
+            }
+        };
+
+        let subList = document.createElement("ul");
+        subList.classList.add("dropdown-content");
+
+        item.subjects.forEach(subject => {
+            let subItem = document.createElement("li");
+            subItem.textContent = subject;
+            subItem.onclick = function (event) {
+                event.stopPropagation();
+                alert(`Opening page for ${subject}`);
+            };
+            subList.appendChild(subItem);
+        });
+
+        listItem.appendChild(subList);
+        navList.appendChild(listItem);
+    });
+});
+
+
+
+        window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+
+
+
+    </script>
+
+</body>
+</html>
